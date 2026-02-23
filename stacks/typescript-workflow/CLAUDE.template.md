@@ -1,58 +1,37 @@
-# {{PROJECT_NAME}}
+# {{PROJECT_NAME}} — Claude Instructions
 
 **Client:** {{CLIENT_NAME}}
-**Purpose:** {{ONE_LINE_DESCRIPTION}}
 **Stack:** TypeScript Workflow (Trigger.dev)
 
-## What This Does
+## What This Project Does
 
 {{DESCRIPTION}}
 
-## Trigger
+## Architecture
 
-{{TRIGGER_DESCRIPTION}}
+**Trigger:** {{TRIGGER_DESCRIPTION}}
 
-## Jobs
+**Jobs:**
 
 | Job | File | Schedule/Trigger |
 |-----|------|-----------------|
 | {{JOB_NAME}} | `src/jobs/{{job-file}}.ts` | {{schedule or webhook}} |
 
-## Integrations
+**Integrations:** {{LIST_INTEGRATIONS}}
 
-{{LIST_INTEGRATIONS}}
+API clients live in `src/lib/` — one file per external service.
 
-See `src/lib/` for API clients.
+## Conventions
 
-## Environment Variables
+- One job per file in `src/lib/`
+- Keep API clients in `src/lib/` — no direct `fetch` calls in job files
+- Jobs should be idempotent — safe to re-run on failure
+- All secrets via environment variables, never hardcoded
 
-Copy `.env.example` to `.env` and fill in:
+## Patterns Referenced
 
-```
-{{ENV_VARS}}
-```
-
-## Running Locally
-
-```bash
-npm install
-cp .env.example .env
-# Fill in .env values
-npm run dev    # starts Trigger.dev dev server
-```
-
-## Deploying
-
-```bash
-npm run deploy  # deploys to Trigger.dev
-```
-
-Register webhooks in external services using the URLs from the Trigger.dev dashboard.
+{{PATTERNS_REFERENCED}}
 
 ## Architecture Notes
 
 {{ARCHITECTURE_NOTES}}
-
-## Patterns Used
-
-{{PATTERNS_REFERENCED}}

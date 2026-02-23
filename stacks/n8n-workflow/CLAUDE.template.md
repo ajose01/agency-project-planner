@@ -1,10 +1,9 @@
-# {{PROJECT_NAME}}
+# {{PROJECT_NAME}} — Claude Instructions
 
 **Client:** {{CLIENT_NAME}}
-**Purpose:** {{ONE_LINE_DESCRIPTION}}
 **Stack:** n8n Workflow
 
-## What This Does
+## What This Project Does
 
 {{DESCRIPTION}}
 
@@ -14,38 +13,24 @@
 |----------|------|---------|
 | {{WORKFLOW_NAME}} | `workflows/{{workflow-file}}.json` | {{trigger}} |
 
+## Conventions
+
+- One workflow = one trigger — don't fan multiple unrelated processes from one workflow
+- Name nodes clearly — the visual graph is the documentation
+- Always include error handling nodes — n8n silently fails without them
+- Use sub-workflows for any logic reused across workflows
+- Export workflows to `workflows/` and commit after every meaningful change
+
 ## Integrations
 
 {{LIST_INTEGRATIONS}}
 
-All credentials are configured in the n8n UI (not in code).
-
-## Setup
-
-1. Import workflow JSON files from `workflows/` into n8n
-2. Configure credentials for each integration in n8n settings
-3. Set webhook URLs in external services (see below)
-4. Activate workflows
-
-## Webhook URLs
-
-After importing, copy webhook URLs from n8n and register them in:
-
-{{WEBHOOK_REGISTRATION_STEPS}}
-
-## Required Credentials (configure in n8n)
-
-{{CREDENTIALS_LIST}}
+All credentials are stored in the n8n UI, not in code.
 
 ## Architecture Notes
 
 {{ARCHITECTURE_NOTES}}
 
-## Versioning
-
-Export updated workflows to `workflows/` and commit after every meaningful change.
-Always export before sharing with clients or before making major changes.
-
-## Patterns Used
+## Patterns Referenced
 
 {{PATTERNS_REFERENCED}}

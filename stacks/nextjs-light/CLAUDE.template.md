@@ -1,58 +1,40 @@
-# {{PROJECT_NAME}}
+# {{PROJECT_NAME}} — Claude Instructions
 
 **Client:** {{CLIENT_NAME}}
-**Purpose:** {{ONE_LINE_DESCRIPTION}}
 **Stack:** Next.js Light (Vercel)
 
-## What This Does
+## What This Project Does
 
 {{DESCRIPTION}}
 
-## Pages
+## Architecture
+
+**Pages:**
 
 | Route | File | Purpose |
 |-------|------|---------|
 | `/` | `app/page.tsx` | {{page_purpose}} |
 
-## API Routes
+**API Routes:**
 
 | Endpoint | File | Purpose |
 |----------|------|---------|
 | `POST /api/{{endpoint}}` | `app/api/{{endpoint}}/route.ts` | {{purpose}} |
 
-## Integrations
+**Integrations:** {{LIST_INTEGRATIONS}}
 
-{{LIST_INTEGRATIONS}}
+## Conventions
 
-## Environment Variables
-
-Copy `.env.example` to `.env.local` and fill in:
-
-```
-{{ENV_VARS}}
-```
-
-## Running Locally
-
-```bash
-npm install
-cp .env.example .env.local
-# Fill in .env.local values
-npm run dev
-```
-
-## Deploying
-
-```bash
-npx vercel
-```
-
-Set env vars in the Vercel dashboard. Every push to `main` auto-deploys.
+- This is a light MVP — resist adding complexity until the client validates the concept
+- No state management library — React state and server components only
+- No auth unless the demo explicitly requires it
+- API clients go in `lib/` — one file per external service
+- Keep API routes thin — business logic in `lib/`, not in route handlers
 
 ## Architecture Notes
 
 {{ARCHITECTURE_NOTES}}
 
-## Patterns Used
+## Patterns Referenced
 
 {{PATTERNS_REFERENCED}}

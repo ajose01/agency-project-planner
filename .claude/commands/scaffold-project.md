@@ -14,9 +14,11 @@ Ask me for all of the following in one message:
 5. Which integrations are needed
 6. Parent directory where the project should be created (e.g. `~/projects/clients` or `/Users/angeljose/projects/automations`). Default to `/Users/angeljose/projects` if not specified.
 
-## Step 2 — Read the stack guide
+## Step 2 — Read the stack templates
 
-Read `stacks/[chosen-stack]/README.md` and `stacks/[chosen-stack]/CLAUDE.template.md`.
+Read both:
+- `stacks/[chosen-stack]/CLAUDE.template.md`
+- `stacks/[chosen-stack]/README.template.md`
 
 ## Step 3 — Write all files to disk
 
@@ -24,10 +26,17 @@ The project root will be `[parent-directory]/[project-name]/`.
 
 Use the Write tool to create every file. Do not just print file contents — actually write them.
 
+**Every project gets two documentation files:**
+- `README.md` — filled from `README.template.md`: setup, running locally, deploying, env vars
+- `CLAUDE.md` — filled from `CLAUDE.template.md`: architecture, conventions, patterns for Claude to follow
+
+These are separate files with different audiences. README is for humans setting up and running the project. CLAUDE.md is instructions for Claude Code when working inside the project.
+
 Files to create per stack:
 
 **typescript-workflow:**
-- `CLAUDE.md` (filled-in template)
+- `README.md` (filled from README.template.md)
+- `CLAUDE.md` (filled from CLAUDE.template.md)
 - `package.json`
 - `tsconfig.json`
 - `trigger.config.ts`
@@ -37,13 +46,14 @@ Files to create per stack:
 - `.gitignore`
 
 **n8n-workflow:**
-- `CLAUDE.md` (filled-in template)
-- `README.md` with setup steps
+- `README.md` (filled from README.template.md)
+- `CLAUDE.md` (filled from CLAUDE.template.md)
 - `workflows/.gitkeep`
 - `.env.example`
 
 **nextjs-light:**
-- `CLAUDE.md` (filled-in template)
+- `README.md` (filled from README.template.md)
+- `CLAUDE.md` (filled from CLAUDE.template.md)
 - `package.json`
 - `next.config.ts`
 - `tailwind.config.ts`
@@ -56,7 +66,8 @@ Files to create per stack:
 - `.gitignore`
 
 **nextjs-convex-app:**
-- `CLAUDE.md` (filled-in template)
+- `README.md` (filled from README.template.md)
+- `CLAUDE.md` (filled from CLAUDE.template.md)
 - `package.json`
 - `next.config.ts`
 - `tailwind.config.ts`

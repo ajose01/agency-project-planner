@@ -1,74 +1,49 @@
-# {{PROJECT_NAME}}
+# {{PROJECT_NAME}} — Claude Instructions
 
 **Client:** {{CLIENT_NAME}}
-**Purpose:** {{ONE_LINE_DESCRIPTION}}
-**Stack:** Next.js + Convex (Full App)
+**Stack:** Next.js + Convex
 
-## What This Does
+## What This Project Does
 
 {{DESCRIPTION}}
 
-## Database Schema
+## Architecture
 
-Key tables in `convex/schema.ts`:
+**Database schema** defined in `convex/schema.ts`:
 
 | Table | Purpose |
 |-------|---------|
 | {{TABLE_NAME}} | {{purpose}} |
 
-## Key Features
+**Auth:** {{AUTH_DESCRIPTION}} via Clerk + Convex Auth.
 
-{{FEATURES_LIST}}
-
-## Integrations
-
-{{LIST_INTEGRATIONS}}
-
-## Auth
-
-{{AUTH_DESCRIPTION}} — using Clerk + Convex Auth.
-
-## Background Jobs
+**Background jobs** in `trigger/`:
 
 | Job | File | Schedule/Trigger |
 |-----|------|-----------------|
 | {{JOB_NAME}} | `trigger/{{job-file}}.ts` | {{schedule}} |
 
-## Environment Variables
+**Integrations:** {{LIST_INTEGRATIONS}}
 
-Copy `.env.example` to `.env.local` and fill in:
+## Conventions
 
-```
-CONVEX_DEPLOYMENT=
-NEXT_PUBLIC_CONVEX_URL=
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-ANTHROPIC_API_KEY=
-{{OTHER_ENV_VARS}}
-```
+- Queries and mutations go in `convex/` — one file per feature domain
+- External API calls go in Convex actions (not queries/mutations) or in `lib/`
+- Never call external APIs from Convex queries or mutations — use actions
+- Keep Next.js route handlers thin — call Convex mutations or `lib/` helpers
+- Background jobs that are heavy or long-running go in `trigger/`, not Convex crons
 
-## Running Locally
+## Key Files
 
-```bash
-npm install
-cp .env.example .env.local
-# Fill in .env.local values
-npx convex dev          # terminal 1 — runs Convex backend
-npm run dev             # terminal 2 — runs Next.js
-```
-
-## Deploying
-
-```bash
-npx convex deploy       # deploy Convex backend
-npx vercel              # deploy Next.js frontend
-npx trigger.dev@latest deploy  # deploy background jobs (if applicable)
-```
+- `convex/schema.ts` — database schema (source of truth)
+- `convex/auth.ts` — auth configuration
+- `lib/` — external API clients (GHL, AI, etc.)
+- `trigger/` — Trigger.dev background jobs
 
 ## Architecture Notes
 
 {{ARCHITECTURE_NOTES}}
 
-## Patterns Used
+## Patterns Referenced
 
 {{PATTERNS_REFERENCED}}
