@@ -9,7 +9,7 @@ First, ask me:
 Then:
 
 **If they need help choosing a provider**, recommend:
-- Anthropic Claude (claude-sonnet-4-6 or claude-opus-4-6) for complex reasoning, long context, tool use
+- Anthropic Claude (claude-sonnet-5-5 or claude-opus-5-5) for complex reasoning, long context, tool use
 - Default to Claude for text tasks — it's what we know best
 
 For image generation, ask whether they are anchoring on an existing photo or generating from scratch:
@@ -41,7 +41,7 @@ import { generateText } from 'ai'
 import { anthropic } from '@ai-sdk/anthropic'
 
 const { text } = await generateText({
-  model: anthropic('claude-sonnet-4-6'),
+  model: anthropic('claude-sonnet-5-5'),
   prompt: '...',
 })
 ```
@@ -52,7 +52,7 @@ import { generateObject } from 'ai'
 import { z } from 'zod'
 
 const { object } = await generateObject({
-  model: anthropic('claude-sonnet-4-6'),
+  model: anthropic('claude-sonnet-5-5'),
   schema: z.object({ ... }),
   prompt: '...',
 })
@@ -64,7 +64,7 @@ import { streamText } from 'ai'
 export async function POST(req: Request) {
   const { messages } = await req.json()
   const result = streamText({
-    model: anthropic('claude-sonnet-4-6'),
+    model: anthropic('claude-sonnet-5-5'),
     messages,
   })
   return result.toDataStreamResponse()
